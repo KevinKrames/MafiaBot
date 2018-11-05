@@ -1,21 +1,22 @@
 import json
+from pymongo import MongoClient
 from pprint import pprint
 import os
 
 credentials = os.path.abspath('credentials.json')
 
 class DatabaseManager:
-    def DatabaseManager():
-    with open(credentials) as f:
-        data = json.load(f)
+    def __init__(self):
+        with open(credentials) as f:
+            data = json.load(f)
 
-        client = MongoClient(data["dbkey"] + data["dbdatabase"])
-        mydatabase = client[data["dbdatabase"]] 
+            client = MongoClient(data["dbkey"] + data["dbdatabase"])
+            mydatabase = client[data["dbdatabase"]] 
 
-        collection = mydatabase["Testing"]
+            self.collection = mydatabase["Testing"]
 
-    def InsertRecord(record):
-        collection.insert_one(record)
+    def InsertRecord(self, record):
+        self.collection.insert_one(record)
 
 # record example
 # rec = { 
