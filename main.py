@@ -6,7 +6,6 @@ import os
 from DatabaseManager import DatabaseManager
 from Game import Game
 
-databaseManager = DatabaseManager()
 
 game = Game().Run()
 
